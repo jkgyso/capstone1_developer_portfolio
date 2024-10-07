@@ -1,0 +1,297 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#contact,
+#landing {
+  background-image: url("./images/hero.jpg");
+  background-size: cover;
+  color: white;
+}
+
+#hero {
+  height: 100vh;
+  position: relative;
+  background-image: url("images/hero.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax {
+  position: relative;
+  background-attachment: fixed;
+}
+
+#hero h1 {
+  font-size: 4em;
+}
+
+#hero p {
+  font-size: 1.5em;
+}
+
+#fadeInTitle {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+#arrow-container {
+  display: none;
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 30px solid #96cdb3;
+  position: relative;
+  animation: bounce 1s infinite;
+}
+
+#navbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  transition: background-color 0.3s;
+}
+
+.navbar {
+  background-color: transparent;
+}
+
+.nav-item {
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.navbar.scrolled {
+  background-color: black;
+  transition: background-color 0.5s ease;
+}
+
+#navbar a {
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+}
+
+#navbar a:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #96cdb3;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+#navbar a:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+.navbar-toggler-icon {
+  background-color: #96cdb3;
+  border: 2px solid white;
+}
+
+#navbar li {
+  font-size: 1.2em;
+}
+
+.rounded-image {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 150px;
+  width: 150px;
+}
+
+#about.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+
+#about.fade-in-section.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#tools.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+  transition-delay: 0.5s;
+}
+
+#tools.fade-in-section.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#projects.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+  transition-delay: 1s;
+}
+
+#projects.fade-in-section.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#contact.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+  transition-delay: 1s;
+}
+
+#contact.fade-in-section.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#tools {
+  background-color: #f0f0f0;
+}
+
+.card-container {
+  perspective: 1000px;
+}
+
+.card {
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  position: relative;
+  height: 250px;
+  width: 100%;
+}
+
+.card-container:hover .card {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card-front img,
+.card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  position: relative;
+}
+
+.card-back img {
+  filter: brightness(30%);
+}
+
+.card-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  color: white;
+  text-align: left;
+}
+
+.card-text h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+#contact h1 {
+  font-size: 50px;
+}
+
+#social-icons img {
+  background-color: #333333;
+  border: 2px solid;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+#social-icons img:hover {
+  filter: grayscale(0);
+}
+
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+  color: white;
+  background-color: transparent;
+  border: 2px solid #96cdb3;
+  transition: color 0.3s ease;
+}
+
+.btn-glow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 5px;
+  background-color: rgba(150, 205, 179, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.btn-glow:hover::before {
+  opacity: 1;
+}
+
+.btn-glow:hover {
+  color: white;
+  box-shadow: 0 0 20px 5px rgba(150, 205, 179, 1);
+}
+
+/* @keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+} */
