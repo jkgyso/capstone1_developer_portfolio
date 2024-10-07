@@ -1,3 +1,20 @@
+// Function to trigger the fade-in animation
+function showTitleAndStartTyping() {
+  const title = document.getElementById("fadeInTitle");
+
+  // Dynamically apply the animation with a delay using JavaScript
+  title.style.animation = "fadeIn 1s forwards";
+  title.style.animationDelay = "2s"; // Set a 2-second delay
+
+  // Start typing effect after the fade-in animation completes
+  setTimeout(startTypingEffect, 1500); // Starts after 2s delay + 1s fade-in duration
+}
+
+// Trigger the function after the DOM is fully loaded
+window.onload = function () {
+  showTitleAndStartTyping();
+};
+
 function startTypingEffect() {
   const text = "FULL STACK WEB DEVELOPER";
   let index = 0;
@@ -19,24 +36,6 @@ function startTypingEffect() {
   }
 
   typeChar(); // Start typing characters
-}
-
-// Function to show the title with fade effect and then start typing
-function showTitleAndStartTyping() {
-  const title = document.getElementById("fadeInTitle");
-
-  // Set initial opacity and clear existing animation
-  title.style.opacity = 0; // Ensure it's initially transparent
-  title.style.animation = ""; // Clear any existing animations
-
-  // Trigger fade-in animation
-  setTimeout(() => {
-    title.style.animation = "fadeIn 1s forwards"; // Apply 6s fade-in animation
-    title.style.opacity = 1; // Ensure opacity is set to 1
-  }, 10); // Small timeout to ensure the style change takes effect
-
-  // Start typing effect after the fade-in animation duration
-  setTimeout(startTypingEffect, 1000); // Start typing effect after 6 seconds
 }
 
 // Function to show navbar items one by one with fade effect
