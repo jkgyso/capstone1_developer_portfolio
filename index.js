@@ -65,28 +65,27 @@ function showNavbarItems() {
 // Start title display and typing effect after the page loads
 window.onload = showTitleAndStartTyping;
 
-document.addEventListener("DOMContentLoaded", function () {
-  const observer = new IntersectionObserver((entries, observer) => {
+function setupObservers() {
+  // Intersection Observer to handle sections coming into view one by one
+  const sectionObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        // Add 'in-view' class when section is in view
+        // Add 'in-view' class when the section is in view
         entry.target.classList.add("in-view");
 
-        // Check if it's the "about" section, then observe the "tools" section
+        // Logic for observing the next sections
         if (entry.target.classList.contains("about-section")) {
           observer.unobserve(entry.target); // Stop observing the about section
           const toolsSection = document.querySelector(".tools-section");
           observer.observe(toolsSection); // Start observing the tools section
         }
 
-        // Check if it's the "tools" section, then observe the "projects" section
         if (entry.target.classList.contains("tools-section")) {
           observer.unobserve(entry.target); // Stop observing the tools section
           const projectsSection = document.querySelector(".projects-section");
           observer.observe(projectsSection); // Start observing the projects section
         }
 
-        // Once the "projects" section is visible, stop observing everything
         if (entry.target.classList.contains("projects-section")) {
           observer.unobserve(entry.target); // Stop observing the projects section
         }
@@ -96,27 +95,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initially observe only the "about" section
   const aboutSection = document.querySelector(".about-section");
-  observer.observe(aboutSection);
-});
+  sectionObserver.observe(aboutSection);
 
-const sections = document.querySelectorAll(".fade-in-section");
+  // Intersection Observer to handle fade-in effects for sections
+  const fadeObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+        } else {
+          entry.target.classList.remove("in-view");
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("in-view");
-      } else {
-        entry.target.classList.remove("in-view");
-      }
-    });
-  },
-  { threshold: 0.1 }
-);
+  // Get all sections with the 'fade-in-section' class and observe them
+  const sections = document.querySelectorAll(".fade-in-section");
+  sections.forEach((section) => {
+    fadeObserver.observe(section);
+  });
+}
 
-sections.forEach((section) => {
-  observer.observe(section);
-});
+// Execute the function after the DOM is fully loaded
+document.addEventListener("DOMContentLoaded", setupObservers);
 
 window.addEventListener("scroll", function () {
   const navbar = document.querySelector("#navbar .navbar");
