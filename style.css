@@ -11,7 +11,7 @@ body {
 
 #contact,
 #landing {
-  background-image: url("./images/hero.jpg");
+  background-image: url("./images/hero3.jpg");
   background-size: cover;
   color: white;
 }
@@ -19,7 +19,7 @@ body {
 #hero {
   height: 100vh;
   position: relative;
-  background-image: url("images/hero.jpg");
+  background-image: url("images/hero4.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -66,7 +66,7 @@ body {
   height: 0;
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
-  border-top: 30px solid #96cdb3;
+  border-top: 30px solid white;
   position: relative;
   animation: bounce 1s infinite;
 }
@@ -123,7 +123,7 @@ body {
   height: 2px;
   left: 50%;
   position: absolute;
-  background: #96cdb3;
+  background: white;
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
   width: 0;
 }
@@ -134,7 +134,7 @@ body {
 }
 
 .navbar-toggler-icon {
-  background-color: #96cdb3;
+  background-color: white;
   border: 2px solid white;
 }
 
@@ -280,7 +280,7 @@ body {
 }
 
 /* Remove this if we'd like the effect to appear within the border */
-.btn-glow::before {
+/* .btn-glow::before {
   content: "";
   position: absolute;
   top: 0;
@@ -292,7 +292,7 @@ body {
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 0;
-}
+} */
 
 .btn-glow:hover::before {
   opacity: 1;
@@ -300,5 +300,5 @@ body {
 
 .btn-glow:hover {
   color: white;
-  box-shadow: 0 0 20px 5px rgba(150, 205, 179, 1);
+  box-shadow: 0 0 20px 5px #ffec8b;
 }
