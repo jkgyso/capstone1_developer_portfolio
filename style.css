@@ -9,8 +9,7 @@ body {
   font-family: Rubik;
 }
 
-#contact,
-#landing {
+#contact {
   background-image: url("./images/hero3.jpg");
   background-size: cover;
   color: white;
